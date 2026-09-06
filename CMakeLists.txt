@@ -5,7 +5,13 @@ project(CLI_Task_Manager LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(CLI_Task_Manager main.cpp)
+add_executable(CLI_Task_Manager main.cpp
+    Task.h
+    TaskManager.h
+    TaskManager.cpp
+    tasks.txt
+    main.cpp
+)
 
 include(GNUInstallDirs)
 install(TARGETS CLI_Task_Manager
