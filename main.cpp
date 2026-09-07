@@ -1,20 +1,18 @@
 #include <iostream>
 #include "TaskManager.h"
 
-using std::cout;
-using std::endl;
-using std::string;
+using namespace std;
 
 int main(int argc, char* argv[])
 {
     cout << "Starting Task Manager" << endl;
 
-    if (argc > 1 && argc <= 3){
+    if (argc > 1 && argc < 5){
         string comd = argv[1];
         if (comd == "add"){
             add_task(argv[2], argv[3]);
         } else if (comd == "list"){
-            list_tasks();
+            //list_tasks();
         } else if (comd == "complete"){
             // mark task as compelte
         } else if (comd == "remove") {
@@ -28,6 +26,7 @@ int main(int argc, char* argv[])
         cout << "ERR: Need to input arguments to run Task Manager" << endl;
         return 1;
     } else {
+        cout << argc << endl;
         cout << "ERR: Entered too many input arguments" << endl;
         return 1;
     }

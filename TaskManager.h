@@ -9,5 +9,6 @@
 #include "Task.h"
 
 void add_task(char* description, char* priority);
+int get_id();
 void remove_task();
 std::vector<Task> list_tasks();
