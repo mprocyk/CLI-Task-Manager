@@ -22,7 +22,7 @@ void add_task(char* description, char* priority){
     new_task->created_date = oss.str();
 
     // status defaults to not started
-    Task::Status task_status = new_task->NOT_STARTED;
+    Task::Status task_status;
 
     // priority defaults to medium
     Task::Priority task_priority;
@@ -52,15 +52,51 @@ void add_task(char* description, char* priority){
     // append this new task to the tasks txt file
     string task_fname = "tasks.txt";
     ofstream task_file;
-    task_file.open(task_fname);
+    task_file.open(task_fname, std::ios_base::app | std::ios_base::out);
     if (task_file.is_open()) {
-        task_file << new_task->ID << " ";
-        task_file << new_task->description << " ";
-        task_file << task_status << " ";
-        task_file << task_priority << " ";
+        task_file << "ID: " << new_task->ID << " | ";
+        task_file << new_task->description << " | ";
+        task_file << get_task_stat(task_status) << " | ";
+        task_file << get_task_prio(task_priority) << " | ";
         task_file << new_task->created_date << "\n";
         task_file.close();
     } else {
         std::cout << "Cannot find task file to open it" << std::endl;
     }
 }
+
+std::string get_task_prio(Task::Priority task_priority){
+    std::string task_prio;
+
+    switch (task_priority){
+    case Task::HIGH:
+        task_prio = "HIGH";
+    case Task::MEDIUM:
+        task_prio = "MEDIUM";
+    case Task::LOW:
+        task_prio = "LOW";
+    }
+
+    return task_prio;
+}
+
+std::string get_task_stat(Task::Status task_status){
+    std::string task_stat;
+
+    switch(task_status){
+    case Task::DONE:
+        task_stat = "DONE";
+    case Task::IN_PROGRESS:
+        task_stat = "IN PROGRESS";
+    case Task::NOT_STARTED:
+        task_stat = "NOT STARTED";
+    }
+
+    return task_stat;
+}
+
+/*int get_id(Task, std::ofstream task_file){
+    // go through lines of task_file
+    // search for task description == Task->Description
+    eturn id;
+}*/
