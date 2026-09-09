@@ -95,8 +95,12 @@ std::string get_task_stat(Task::Status task_status){
     return task_stat;
 }
 
-/*int get_id(Task, std::ofstream task_file){
+int get_id(Task task, std::ofstream task_file){
+    //int task_file_length
     // go through lines of task_file
+    //for (int i = 0; i < task_file_length; i++){
+    //    if (task->description ==
+    //}
     // search for task description == Task->Description
-    eturn id;
-}*/
+    return id;
+}
